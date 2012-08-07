@@ -4,3 +4,8 @@
 *.jar
 *.war
 *.ear
+target
+*.csv
+.settings
+*.html
+.DS_Store
