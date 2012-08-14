@@ -1,13 +1,15 @@
 package erodin2.file;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+
+import org.apache.commons.io.IOUtils;
 
 import erodin2.bank.Cartola;
 import erodin2.bank.Movement;
@@ -42,19 +44,8 @@ public class FileOperations {
 		File file = new File(fileName);
 		String fileContent = "";
 		try {
-
-			// new a reader and point the reader to the file
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-
-			String line = "";
-			//
-			// System.out
-			// .println("Content of the file\n================================");
-			while ((line = reader.readLine()) != null) {
-				fileContent = fileContent + line;
-			}
-			reader.close();
-			reader = null;
+			InputStream input = new FileInputStream(file);
+			fileContent = IOUtils.toString(input);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

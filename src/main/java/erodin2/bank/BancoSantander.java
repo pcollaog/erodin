@@ -6,10 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 
-import erodin2.htmlparser.HtmlParserBancoChile;
 import erodin2.htmlparser.HtmlParserBancoSantander;
 
-public class BancoSantander extends Bank {
+public class BancoSantander extends AbstractBank {
 
 	protected String _baseUrl = "http://www.santander.cl/";
 

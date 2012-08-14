@@ -10,10 +10,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import erodin2.Utils;
-import erodin2.htmlparser.HtmlParserBancoChile;
 
-public abstract class Bank {
+public abstract class AbstractBank {
+
 	protected WebDriver driver;
+
 	protected StringBuffer verificationErrors = new StringBuffer();
 
 	public List<Cartola> getMovements(String user, String password,
