@@ -9,10 +9,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TestCase1BancoChileJava {
+
+	private static Logger logger = LoggerFactory
+			.getLogger(TestCase1BancoChileJava.class);
+
 	private WebDriver driver;
+
 	private String baseUrl;
+
 	private StringBuffer verificationErrors = new StringBuffer();
 
 	@Before
@@ -36,7 +44,7 @@ public class TestCase1BancoChileJava {
 		String sourceHTML = driver.getPageSource();
 		// driver.wait(5000);
 		// driver.findElement(By.id("20102")).click();
-		System.out.println(sourceHTML);
+		logger.debug(sourceHTML);
 	}
 
 	@After

@@ -16,12 +16,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class LoginSantander {
+
 	private static final String USER_SANTANDER = "14121303-2"; // format
+
 	// 12345678-9
 	private static final String PASSWORD_SANTANDER = "2912"; // four digits
+
 	// 12345678-9
 	private WebDriver driver;
+
 	private String baseUrl;
+
 	private StringBuffer verificationErrors = new StringBuffer();
 
 	@Before
@@ -49,7 +54,7 @@ public class LoginSantander {
 		// <a href="javascript:clickMenu(0,'CU1')">Cuentas</a>
 
 		driver.findElement(By.linkText("Cuentas Corrientes")).click();
-		driver.findElement(By.linkText("Cartolas Hist—ricas")).click();
+		driver.findElement(By.linkText("Cartolas Histï¿½ricas")).click();
 		driver.switchTo().frame("p4");
 		driver.findElement(By.id("tipo1")).click();
 		new Select(driver.findElement(By.name("mes0")))

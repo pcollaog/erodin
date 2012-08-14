@@ -12,7 +12,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import erodin2.Utils;
 
 public abstract class Bank {
+
 	protected WebDriver driver;
+
 	protected StringBuffer verificationErrors = new StringBuffer();
 
 	public List<Cartola> getMovements(String user, String password,

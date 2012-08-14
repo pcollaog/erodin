@@ -8,6 +8,8 @@ import org.jboss.netty.util.internal.StringUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import erodin2.BankOperations;
 import erodin2.Messages;
@@ -21,6 +23,9 @@ import erodin2.file.FileOperations;
 import erodin2.htmlparser.HtmlParserBancoSantander;
 
 public class ErodinTests {
+
+	private static Logger logger = LoggerFactory.getLogger(ErodinTests.class);
+
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -59,16 +64,18 @@ public class ErodinTests {
 	// System.out.println("total: " + total);
 	// }
 
-// Arreglar una vez que se repare el acceso al Banco Santander
-//	@Test
-//	public void testLocateBancoSantanderMovements() throws Exception {
-//		String months = "Julio 2011,Agosto 2011,Septiembre 2011,Octubre 2011,Noviembre 2011,Diciembre 2011,Enero 2012,Febrero 2012,Marzo 2012,Abril 2012";
-//		new BankOperations().locateBancodeSantanderMovements(months);
-//	}
+	// Arreglar una vez que se repare el acceso al Banco Santander
+	// @Test
+	// public void testLocateBancoSantanderMovements() throws Exception {
+	// String months =
+	// "Julio 2011,Agosto 2011,Septiembre 2011,Octubre 2011,Noviembre 2011,Diciembre 2011,Enero 2012,Febrero 2012,Marzo 2012,Abril 2012";
+	// new BankOperations().locateBancodeSantanderMovements(months);
+	// }
 
 	@Test
 	public void testLocateBancoChileMovements() throws Exception {
-		//String months = "Agosto 2011,Septiembre 2011,Octubre 2011,Noviembre 2011,Diciembre 2011,Enero 2012,Febrero 2012,Marzo 2012,Abril 2012,Mayo 2012,Junio 2012";
+		// String months =
+		// "Agosto 2011,Septiembre 2011,Octubre 2011,Noviembre 2011,Diciembre 2011,Enero 2012,Febrero 2012,Marzo 2012,Abril 2012,Mayo 2012,Junio 2012";
 		String months = "Mayo 2012,Junio 2012";
 		new BankOperations().locateBancodeChileMovements(months);
 	}
@@ -97,22 +104,19 @@ public class ErodinTests {
 		long total = 0;
 		for (Movement movement : movements) {
 
-			System.out.println("Date: " + movement.getDate());
-			System.out.println("Description: " + movement.getDescription());
-			System.out.println("Debit: " + movement.getDebit());
-			System.out.println("Credit: " + movement.getCredit());
-			System.out.println("Amount: " + movement.getAmount());
+			logger.debug("Date: {}", movement.getDate());
+			logger.debug("Description: {}", movement.getDescription());
+			logger.debug("Debit: {}", movement.getDebit());
+			logger.debug("Credit: {}", movement.getCredit());
+			logger.debug("Amount: {}", movement.getAmount());
 			// total = total
 			// + Long.parseLong(StringUtil
 			// .stripControlCharacters(movement.getAmount())
 			// .replaceAll("\\uc2a0", "").trim());
 
 			total = total + Long.parseLong(movement.getAmount());
-
-			System.out.println("---");
 		}
-		System.out.println("total: " + total);
-
+		logger.debug("total: {}", total);
 	}
 
 	@Test
@@ -133,7 +137,7 @@ public class ErodinTests {
 		List<Movement> movements = new HtmlParserBancoSantander().getMovements(
 				new FileOperations().read("BancoSantander.html"), "2012",
 				"Enero");
-		System.out.println(new FileOperations().csvMovementsContent(movements));
+		logger.debug(new FileOperations().csvMovementsContent(movements));
 	}
 
 	@Test
@@ -199,8 +203,7 @@ public class ErodinTests {
 
 	@Test
 	public void testGetNow() throws Exception {
-		System.out.println(Utils.getNow());
-		;
+		logger.debug(Utils.getNow());
 	}
 
 	@After

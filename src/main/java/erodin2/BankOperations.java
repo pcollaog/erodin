@@ -2,6 +2,9 @@ package erodin2;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import erodin2.bank.BancoChile;
 import erodin2.bank.BancoSantander;
 import erodin2.bank.Bank;
@@ -10,6 +13,9 @@ import erodin2.bank.Movement;
 import erodin2.file.FileOperations;
 
 public class BankOperations {
+
+	private static Logger logger = LoggerFactory
+			.getLogger(BankOperations.class);
 
 	public void locateBancodeChileMovements(String months) {
 		Bank bank = new BancoChile();
@@ -22,23 +28,17 @@ public class BankOperations {
 		for (Cartola cartola : cartolas) {
 
 			for (Movement movement : cartola.getMovements()) {
+				logger.debug(movement.toString());
 
-				System.out.println("Date: " + movement.getDate());
-				System.out.println("Description: " + movement.getDescription());
-				System.out.println("Debit: " + movement.getDebit());
-				System.out.println("Credit: " + movement.getCredit());
-				System.out.println("Amount: " + movement.getAmount());
 				// total = total
 				// + Long.parseLong(StringUtil
 				// .stripControlCharacters(movement.getAmount())
 				// .replaceAll("\\uc2a0", "").trim());
 
 				total = total + Long.parseLong(movement.getAmount());
-
-				System.out.println("---");
 			}
 		}
-		System.out.println("total: " + total);
+		logger.debug("total: {}", total);
 
 		String fileName = "cartolas"
 				+ Messages.getString("Main.creditCard.bchile") + "_"
@@ -57,23 +57,17 @@ public class BankOperations {
 		for (Cartola cartola : cartolas) {
 
 			for (Movement movement : cartola.getMovements()) {
+				logger.debug(movement.toString());
 
-				System.out.println("Date: " + movement.getDate());
-				System.out.println("Description: " + movement.getDescription());
-				System.out.println("Debit: " + movement.getDebit());
-				System.out.println("Credit: " + movement.getCredit());
-				System.out.println("Amount: " + movement.getAmount());
 				// total = total
 				// + Long.parseLong(StringUtil
 				// .stripControlCharacters(movement.getAmount())
 				// .replaceAll("\\uc2a0", "").trim());
 
 				total = total + Long.parseLong(movement.getAmount());
-
-				System.out.println("---");
 			}
 		}
-		System.out.println("total: " + total);
+		logger.debug("total: {}", total);
 
 		String fileName = "cartolas"
 				+ Messages.getString("Main.creditCard.bchile") + "_"

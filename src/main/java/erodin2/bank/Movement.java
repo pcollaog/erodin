@@ -1,13 +1,24 @@
 package erodin2.bank;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 public class Movement {
+
 	private String _date;
+
 	private String _description;
+
 	private String _amount;
+
 	private String _category;
+
 	private String _credit;
+
 	private String _debit;
+
 	private String _origin;
+
 	private String _nroDocto;
 
 	public String getDate() {
@@ -85,6 +96,12 @@ public class Movement {
 			formattedAmount = number.replace(".", "");
 		}
 		return formattedAmount.replaceAll("\\u00A0", "");
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this,
+				ToStringStyle.MULTI_LINE_STYLE);
 	}
 
 }
