@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import erodin2.Utils;
 
-public abstract class Bank {
+public abstract class AbstractBank {
 
 	protected WebDriver driver;
 

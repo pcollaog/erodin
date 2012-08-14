@@ -3,13 +3,21 @@ package erodin2.bank;
 import java.util.List;
 
 public class Cartola {
+
 	private List<Movement> _movements;
+
 	private String _totalDebit;
+
 	private String _totalCredit;
+
 	private String _initialAmount;
+
 	private String _finalAmount;
+
 	private String _month;
+
 	private String _year;
+
 	private String _reconciliationDate;
 
 	public String getReconciliationDate() {

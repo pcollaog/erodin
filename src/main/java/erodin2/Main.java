@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import erodin2.bank.BancoChile;
-import erodin2.bank.Bank;
+import erodin2.bank.AbstractBank;
 import erodin2.bank.Cartola;
 import erodin2.bank.Movement;
 import erodin2.file.FileOperations;
