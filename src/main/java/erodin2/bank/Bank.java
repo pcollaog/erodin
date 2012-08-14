@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import erodin2.Utils;
-import erodin2.htmlparser.HtmlParserBancoChile;
 
 public abstract class Bank {
 	protected WebDriver driver;
