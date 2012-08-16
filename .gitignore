@@ -9,3 +9,4 @@ target
 .settings
 *.html
 .DS_Store
+src/main/resources/erodin2/messages.properties
